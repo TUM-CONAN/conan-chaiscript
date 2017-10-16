@@ -5,7 +5,7 @@ SHA1="be225a92099d523f05ef4c29a4c7a54f2cd951d2"
 
 class ChaiscriptConan(ConanFile):
     name = "chaiscript"
-    version = "6.0.0_1"
+    version = "6.0.0_2"
     license = "<Put the package license here>"
     url = "<Package recipe repository url here, for issues about the package>"
     settings = "os", "compiler", "build_type", "arch"
@@ -43,9 +43,10 @@ class ChaiscriptConan(ConanFile):
         self.copy("*.hpp", dst="include", src=os.path.join(self.package_dir, "include"), keep_path=True)
         self.copy("*.chai", dst="include", src=os.path.join(self.package_dir, "include"), keep_path=True)
         self.copy("*.lib", dst="lib", keep_path=False)
-        self.copy("*.dll", dst="bin", keep_path=False)
-        self.copy("*.so", dst="lib", src="build-universal", keep_path=False)
-        self.copy("*.dylib", dst="lib", src="build-universal", keep_path=False)
+        self.copy("*.a", dst="lib", src="build-universal", keep_path=False)
+        #self.copy("*.dll", dst="bin", keep_path=False)
+        #self.copy("*.so", dst="lib", src="build-universal", keep_path=False)
+        #self.copy("*.dylib", dst="lib", src="build-universal", keep_path=False)
 
     def package_info(self):
-        self.cpp_info.libs = ["chaiscript_stdlib-6.0.0"]
+        self.cpp_info.libs = ["stdlib"]
